@@ -7,7 +7,7 @@ A comprehensive machine translation system for Arabic-English language pairs, im
 - [Dependencies](#dependencies)
 - [Implementation Details](#implementation-details)
 - [Usage](#usage)
-- [Evaluation Metrics](#evaluation-metrics)
+- [Evaluation System](#evaluation-system)
 - [Visualization](#visualization)
 
 ## Overview
@@ -80,8 +80,26 @@ The `BilingualTranslationPipeline` class implements the following key components
 - `translate_text()`: Translates individual texts
 - `interactive_translation_test()`: Provides an interactive interface for testing translations
 
+## Usage
 
-## 3. Evaluation System
+### Basic Usage
+```python
+# Initialize pipeline
+pipeline = BilingualTranslationPipeline('ar-en')
+
+# Run full pipeline
+pipeline.run_pipeline()
+
+# Interactive translation
+pipeline.interactive_translation_test()
+```
+
+### Evaluation
+```python
+# Run evaluation on 100 samples
+pipeline.evaluate_translations(num_samples=100)
+```
+## Evaluation System
 
 The translation system implements a comprehensive evaluation framework using BLEU and ROUGE scores to assess translation quality. This document provides detailed information about the evaluation metrics and their implementation.
 
@@ -269,73 +287,6 @@ The evaluation system generates several output files:
    - Compare BLEU and ROUGE scores
    - Look for patterns in score distributions
    - Consider language-specific characteristics
-
-### 8. Limitations
-
-1. **BLEU Score Limitations**
-   - Doesn't consider semantic meaning
-   - May penalize valid alternative translations
-   - Less effective for morphologically rich languages
-
-2. **ROUGE Score Limitations**
-   - Focuses on recall, may miss precision issues
-   - Doesn't consider word order importance
-   - May overestimate quality for short translations
-
-### 9. Future Improvements
-
-1. **Planned Enhancements**
-   - Add METEOR score implementation
-   - Implement TER (Translation Edit Rate)
-   - Add semantic similarity metrics
-
-2. **Research Directions**
-   - Explore neural evaluation metrics
-   - Investigate language-specific adaptations
-   - Develop custom metrics for Arabic-English translation
-### 4. Visualization System
-The pipeline includes several visualization components:
-
-- Word clouds for source and target languages
-- Sentence length distributions
-- Training/validation split visualization
-- Training metrics plots
-- Evaluation scores visualization
-
-## Usage
-
-### Basic Usage
-```python
-# Initialize pipeline
-pipeline = BilingualTranslationPipeline('ar-en')
-
-# Run full pipeline
-pipeline.run_pipeline()
-
-# Interactive translation
-pipeline.interactive_translation_test()
-```
-
-### Evaluation
-```python
-# Run evaluation on 100 samples
-pipeline.evaluate_translations(num_samples=100)
-```
-
-## Evaluation Metrics
-
-### BLEU Score
-- Range: 0 to 1 (higher is better)
-- Measures translation precision
-- Considers n-gram matches
-
-### ROUGE Scores
-- Range: 0 to 1 (higher is better)
-- Measures translation recall
-- Three variants:
-  - ROUGE-1: Single word matches
-  - ROUGE-2: Two-word phrase matches
-  - ROUGE-L: Longest common subsequence
 
 ## Visualization
 
